@@ -6,11 +6,11 @@ import { useState, useRef, useEffect } from 'react'
 export default function SmartPhone(props: any){
 
     const [processing, setProcessing] = useState<boolean>(false);
-    const [IOScreen, setIOScreen] = useState<boolean>(false);
-    const [home, setHome] = useState<boolean>(true);
+    const [IOScreen, setIOScreen] = useState<boolean>(true);
+    const [home, setHome] = useState<boolean>(false);
 
-    const [canReply, setCanReply] = useState<boolean>(true);
-    const [isReplying, setIsReplying] = useState<boolean>(false);
+    const [canReply, setCanReply] = useState<boolean>(false);
+    const [isReplying, setIsReplying] = useState<boolean>(true);
 
     const numPadItems = [1,2,3,4,5,6,7,8,9,'*',0,'#']
     const textWithNewline = 'This is a line of text.\nThis is a new line of text.';
@@ -80,7 +80,7 @@ export default function SmartPhone(props: any){
                     </div>
                     {isReplying ? 
                         <div className="w-full h-2/6 flex flex-col bg-zinc-400 justify-center items-center p-5 rounded-lg">
-                            <input className="rounded-lg w-full py-3 px-4 h4 border border-green-200" id="ussd-input" />
+                            <input className="rounded-lg w-full py-3 px-4 h4 border border-green-200" id="ussd-input" placeholder="Enter Choice"/>
                             <button className="flex justify-center items-center p-4 bg-green-500 rounded-full shadow-2xl shadow-lime-400 mt-8">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 stroke-2 fill-white" viewBox="0 0 24 24">
                                     <path fillRule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clipRule="evenodd" />
