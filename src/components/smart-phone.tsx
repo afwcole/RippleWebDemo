@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import Accordion from "./utils/accordion"
 import { useState, useRef, useEffect } from 'react'
@@ -9,7 +9,7 @@ export default function SmartPhone(props: any){
     const [IOScreen, setIOScreen] = useState<boolean>(true);
     const [home, setHome] = useState<boolean>(false);
 
-    const [canReply, setCanReply] = useState<boolean>(false);
+    const [canReply, setCanReply] = useState<boolean>(true);
     const [isReplying, setIsReplying] = useState<boolean>(true);
 
     const numPadItems = [1,2,3,4,5,6,7,8,9,'*',0,'#']
