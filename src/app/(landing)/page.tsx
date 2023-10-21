@@ -9,11 +9,13 @@ import FeaturesBlocks from '@/components/features-blocks'
 import Testimonials from '@/components/testimonials'
 import Newsletter from '@/components/newsletter'
 import ProblemBlocks from '@/components/problem-blocks'
+import Simulator from '@/components/simulator'
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <Simulator />
       <ProblemBlocks />
       <Features />
       <FeaturesBlocks />
