@@ -69,7 +69,7 @@ export default function Features() {
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1">Share ownership of wallets with Multisign accounts</div>
-                    <div className="text-gray-600">Enhance security and collaborative efforts with our Multisign accounts feature. It’s all about teamwork and ensuring assets are managed securely.</div>
+                    <div className="text-gray-600">Enhance security and collaborative efforts with our Multisign accounts feature. It’s all about teamwork and ensuring assets are managed securely. Great for joint accounts, businesses and organizations.</div>
                   </div>
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
                     <svg className="w-3 h-3 fill-current" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
