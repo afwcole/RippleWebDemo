@@ -6,8 +6,8 @@ import { getRandomPhoneNumber  } from "@/app/utils"
 
 export default function Simulator() {
 
-    const [phoneANumber, setPhoneANumber] = useState<string>();
-    const [phoneBNumber, setPhoneBNumber] = useState<string>();
+    const [phoneANumber, setPhoneANumber] = useState<string>('233544095844');
+    const [phoneBNumber, setPhoneBNumber] = useState<string>('165100003444');
     const [phoneASMSList, setPhoneASMSList] = useState<Array<string>>([]);
     const [phoneBSMSList, setPhoneBSMSList] = useState<Array<string>>([]);
 
@@ -78,9 +78,10 @@ export default function Simulator() {
                 <div data-popper-arrow></div>
             </div>
             
-            <div className="px-10 grid grid-cols-2 gap-5">
+            {/* px-10 grid grid-cols-2 gap-5 */}
+            <div className="px-10 grid grid-cols-2 gap-5 overflow-auto grid-rows-auto grid-flow-col">
                 {/* Phone 1 Section */}
-                <div className="flex flex-col bg-zinc-300 p-10 rounded-lg">
+                <div className="flex flex-col col-span-1 bg-zinc-300 p-10 rounded-lg w-full min-w-[500px]">
                     <div className="flex flex-row w-full justify-between items-center">
                         <div>
                             <h3 className="h3">Phone A Simulator</h3>
@@ -97,12 +98,12 @@ export default function Simulator() {
                     </div>
                     <hr className="h-px my-8 bg-gray-200 border-0 bg-zinc-700"/>
                     <div className="flex flex-row w-full justify-center items-center">
-                        <SmartPhone/>
+                        <SmartPhone phone={phoneANumber}/>
                     </div>      
                 </div>
 
                 {/* Phone 2 Section */}
-                <div className="flex flex-col bg-zinc-300 p-10 rounded-lg">
+                <div className="flex flex-col col-span-1 bg-zinc-300 p-10 w-full rounded-lg min-w-[500px]">
                     <div className="flex flex-row w-full justify-between items-center">
                         <div>
                             <h3 className="h3">Phone B Simulator</h3>
@@ -119,49 +120,10 @@ export default function Simulator() {
                     </div>
                     <hr className="h-px my-8 bg-gray-200 border-0 bg-zinc-700"/>
                     <div className="flex flex-row w-full justify-center items-center">
-                        {/* <SmartPhone/> */}
+                        <SmartPhone phone={phoneBNumber}/>
                     </div>      
                 </div>
             </div>
-
-            {/* <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown button <svg className="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
-            </svg>
-            </button>
-            <div id="dropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                    <li>
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                    </li>
-                    <li>
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                    </li>
-                    <li>
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
-                    </li>
-                </ul>
-            </div> */}
-
-<div id="accordion-collapse" data-accordion="collapse">
-  <h2 id="accordion-collapse-heading-1">
-    <button type="button" className="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-collapse-body-1" aria-expanded="false" aria-controls="accordion-collapse-body-1">
-      <span>What is Flowbite?</span>
-      <svg data-accordion-icon className="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5 5 1 1 5"/>
-      </svg>
-    </button>
-  </h2>
-  <div id="accordion-collapse-body-1" className="hidden text-gray-600 overflow-hidden transition-all duration-300 ease-in-out" aria-labelledby="accordion-collapse-heading-1">
-    <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-      <p className="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
-      <p className="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" className="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
-    </div>
-  </div>
-</div>
-
         </section>
     )
 }

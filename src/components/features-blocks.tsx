@@ -57,14 +57,14 @@ export default function FeaturesBlocks() {
                 <g fill="none" fillRule="evenodd">
                   <rect className="fill-current text-blue-600" width="64" height="64" rx="32" />
                   <g strokeWidth="2">
-                    <path className="stroke-current text-blue-300" d="M34.743 29.714L36.57 32 27.43 43.429H24M24 20.571h3.429l1.828 2.286" />
-                    <path className="stroke-current text-white" strokeLinecap="square" d="M34.743 41.143l1.828 2.286H40M40 20.571h-3.429L27.43 32l1.828 2.286" />
-                    <path className="stroke-current text-blue-300" d="M36.571 32H40" />
-                    <path className="stroke-current text-white" d="M24 32h3.429" strokeLinecap="square" />
+                    <path className="stroke-current text-white" d="M32 37.714A5.714 5.714 0 0037.714 32a5.714 5.714 0 005.715 5.714" />
+                    <path className="stroke-current text-white" d="M32 37.714a5.714 5.714 0 015.714 5.715 5.714 5.714 0 015.715-5.715M20.571 26.286a5.714 5.714 0 005.715-5.715A5.714 5.714 0 0032 26.286" />
+                    <path className="stroke-current text-white" d="M20.571 26.286A5.714 5.714 0 0126.286 32 5.714 5.714 0 0132 26.286" />
+                    <path className="stroke-current text-blue-300" d="M21.714 40h4.572M24 37.714v4.572M37.714 24h4.572M40 21.714v4.572" strokeLinecap="square" />
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-center">View Transaction History & Account Info</h4>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-center">Create Multisign Account</h4>
               <p className="text-gray-600 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
 
@@ -74,14 +74,14 @@ export default function FeaturesBlocks() {
                 <g fill="none" fillRule="evenodd">
                   <rect className="fill-current text-blue-600" width="64" height="64" rx="32" />
                   <g strokeWidth="2">
-                    <path className="stroke-current text-white" d="M32 37.714A5.714 5.714 0 0037.714 32a5.714 5.714 0 005.715 5.714" />
-                    <path className="stroke-current text-white" d="M32 37.714a5.714 5.714 0 015.714 5.715 5.714 5.714 0 015.715-5.715M20.571 26.286a5.714 5.714 0 005.715-5.715A5.714 5.714 0 0032 26.286" />
-                    <path className="stroke-current text-white" d="M20.571 26.286A5.714 5.714 0 0126.286 32 5.714 5.714 0 0132 26.286" />
-                    <path className="stroke-current text-blue-300" d="M21.714 40h4.572M24 37.714v4.572M37.714 24h4.572M40 21.714v4.572" strokeLinecap="square" />
+                    <path className="stroke-current text-blue-300" d="M34.743 29.714L36.57 32 27.43 43.429H24M24 20.571h3.429l1.828 2.286" />
+                    <path className="stroke-current text-white" strokeLinecap="square" d="M34.743 41.143l1.828 2.286H40M40 20.571h-3.429L27.43 32l1.828 2.286" />
+                    <path className="stroke-current text-blue-300" d="M36.571 32H40" />
+                    <path className="stroke-current text-white" d="M24 32h3.429" strokeLinecap="square" />
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-center">Create Multisign Account</h4>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-center">View Transaction History & Account Info</h4>
               <p className="text-gray-600 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
 
@@ -112,7 +112,7 @@ export default function FeaturesBlocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-center">Initiate and Approve Multisign Transactions</h4>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-center">Initiate and Approve POS Transactions</h4>
               <p className="text-gray-600 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
 

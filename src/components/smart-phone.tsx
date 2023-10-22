@@ -1,37 +1,92 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, ChangeEvent } from 'react'
 import { Drawer } from 'flowbite';
 
-export default function SmartPhone(props: any){
+type SmartPhoneProps = {
+  phone: string
+}
+
+export default function SmartPhone({ phone }: SmartPhoneProps){
 
     const [processing, setProcessing] = useState<boolean>(false);
     const [IOScreen, setIOScreen] = useState<boolean>(false);
     const [home, setHome] = useState<boolean>(true);
-
     const [canReply, setCanReply] = useState<boolean>(true);
-    const [isReplying, setIsReplying] = useState<boolean>(true);
-
-    const [messages, setMessages] = useState<Array<string>>([]);
-
+    const [isReplying, setIsReplying] = useState<boolean>(false);
+    const [messages, setMessages] = useState<Array<string>>(['Lorem ipsum dolor sit amet, consectetur adipiscing elit. ', 'Fusce rutrum accumsan gravida. Proin condimentum luctus imperdiet. Praesent ut urna leo. Mauris non lorem mollis, maximus enim in, consequat dolor. ']);
     const [SMSIsOpen, setSMSIsOpen] = useState(false);
+    const [inputValue, setInputValue] = useState<string>('');
+
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        console.log(event.target.value)
+        setInputValue(event.target.value);
+    };
 
     const toggleSMSIsOpen = () => {
         setSMSIsOpen((prev) => !prev);
     };
 
+    const switchScreen = (home:boolean, loading:boolean, io:boolean) => {
+        if (home) {
+            // clear all states
+        }
+        setInputValue('')
+        setIsReplying(false)
+        setProcessing(loading)
+        setIOScreen(io)
+        setHome(home)
+    }
+
+    const dialExtenstion = () => {
+        let success
+        switchScreen(false, true, false)
+        setInputValue('')
+        // Simulate an API request with a timer (e.g., 2 seconds)
+        setTimeout(() => {
+            success = true
+            switchScreen(false, false, true)
+            if (success){
+                setCanReply(true)
+            } else {
+                setCanReply(false)
+            }
+            switchScreen(false, false, true)
+        }, 2000);
+    }
+
+    const sendMessage = () => {
+        let success
+        switchScreen(false, true, false)
+        setIsReplying(false)
+        setInputValue('')
+        // Simulate an API request with a timer (e.g., 2 seconds)
+        setTimeout(() => {
+            success = true
+            switchScreen(false, false, true)
+            if (success) {
+                setCanReply(true)
+            } else {
+                setCanReply(false)
+            }   
+        }, 2000);
+    }
+
+    useEffect(()=>{
+    }, [messages, phone])
+
     const numPadItems = [1,2,3,4,5,6,7,8,9,'*',0,'#']
     const textWithNewline = 'This is a line of text.\nThis is a new line of text.';
 
-    
     return (
-        <div className="flex relative flex-col border-4 border-zinc-900 rounded-xl h-[70vh] w-[40vh] bg-white"> 
+        <div className="flex relative flex-col border-4 border-zinc-900 rounded-xl h-[70vh] w-[40vh] min-h-[700px] min-w-[400px] bg-white"> 
             {/* SMS Indicator */}
             <div className="flex flex-row w-full justify-between p-3 items-center bg-slate-950">
                 <h4 className="h4 text-white">SMS Notifications</h4>
-                <button data-drawer-target="drawer-top-sms" data-drawer-show="drawer-top-sms" data-drawer-placement="top" aria-controls="drawer-top-sms">
+                <button aria-controls="drawer-top-sms" onClick={toggleSMSIsOpen}>
                     <span className="relative flex h-10 w-10">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-75"></span>
+                        {/* "animate-ping " */}
+                        <span className={`${messages.length ? 'animate-ping': ''} absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-100`}></span>
                         <span className="relative inline-flex rounded-full h-10 w-10 bg-white justify-center items-center hover:bg-zinc-300 active:bg-green-300">
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 rounded-full fill-green-500" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
@@ -42,17 +97,13 @@ export default function SmartPhone(props: any){
             </div>
 
             {/* SMS Drawer Component */}
-            {/* invisible - visible*/}
-            {/* "" */}
-            {/* ${SMSIsVisible ? 'visible':'invisible'} */}
-            <div id="drawer-top-sms" className='visible absolute top-0 left-0 right-0 z-40 w-full h-full p-4 transition-transform -translate-y-full bg-[#f1f2f6] rounded-lg' tabIndex={-1} aria-labelledby="drawer-top-label">
+            <div id="drawer-top-sms" className={`${SMSIsOpen ? 'h-full p-4 visible':'h-0 invisible'} absolute top-0 left-0 right-0 w-full transition-all duration-200 ease-in-out bg-[#f1f2f6] rounded-lg`} tabIndex={-1} aria-labelledby="drawer-top-label">
                 <h5 id="drawer-top-label" className="inline-flex items-center mb-4 text-base font-semibold text-zinc-800 dark:text-zinc-900">
                     <svg className="w-4 h-4 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
                     </svg>
                     SMS Notifications
                 </h5>
-
 
                 {messages.length ? 
                     <div className='h-5/6 overflow-y-auto mb-5'>
@@ -74,7 +125,7 @@ export default function SmartPhone(props: any){
                 }
 
                 <div className='bottom-0 flex items-center justify-center'>
-                    <button className="bg-gray-400 hover:bg-zinc-900 rounded-lg w-12 h-4" data-drawer-hide="drawer-top-sms"  aria-controls="drawer-top-sms" type="button">                        
+                    <button className="bg-gray-400 hover:bg-zinc-900 rounded-lg w-12 h-4" onClick={toggleSMSIsOpen}>                        
                     </button>
                 </div>
             </div> 
@@ -110,7 +161,7 @@ export default function SmartPhone(props: any){
                     </div>
 
                     {/* Phone Button View */}
-                    <button className="flex justify-center items-center p-4 bg-green-500 rounded-full shadow-2xl shadow-lime-400 mt-8">
+                    <button className="flex justify-center items-center p-4 bg-green-500 rounded-full shadow-2xl shadow-lime-400 mt-8" onClick={dialExtenstion}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 stroke-2 fill-white" viewBox="0 0 24 24">
                             <path fillRule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clipRule="evenodd" />
                         </svg>
@@ -125,22 +176,28 @@ export default function SmartPhone(props: any){
                         <pre className="text-zinc-950 font-bold text-center">{textWithNewline}</pre>
                     </div>
                     {isReplying ? 
-                        <div className="w-full h-2/6 flex flex-col bg-zinc-400 justify-center items-center p-5 rounded-lg">
-                            <input className="rounded-lg w-full py-3 px-4 h4 border border-green-200" id="ussd-input" placeholder="Enter Choice"/>
-                            <button className="flex justify-center items-center p-4 bg-green-500 rounded-full shadow-2xl shadow-lime-400 mt-8">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 stroke-2 fill-white" viewBox="0 0 24 24">
-                                    <path fillRule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clipRule="evenodd" />
-                                </svg>
-                            </button>
+                        <div className="w-full h-2/6 flex flex-col bg-zinc-900 justify-center items-center p-5 rounded-t-lg transition-all duration-200 ease-in-out ">
+                            <input className="rounded-md w-full p-2 border text-md font-semibold" value={inputValue} type="text" onChange={handleInputChange} placeholder="Enter Choice"/>
+                            <div className='flex flex-row p-5'>
+                                <button className="flex justify-center items-center bg-red-500 rounded-full shadow-lg shadow-red-900 mr-5" onClick={()=>switchScreen(true, false, false)}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 fill-white m-2" viewBox="0 0 24 24" fill="currentColor">
+                                        <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clipRule="evenodd" />
+                                    </svg>
+                                </button>
+                                <button className="flex justify-center items-center bg-green-500 rounded-full shadow-lg shadow-green-900 " onClick={()=>sendMessage()}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 stroke-2 fill-white m-2" viewBox="0 0 24 24">
+                                        <path fillRule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clipRule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div> 
                         </div>
-
                     :
                         <div className={`w-full h-1/6 items-center p-2 ${canReply ? 'grid grid-cols-2 gap-2':'grid grid-cols-1'}  `}>
-                            <button className="flex justify-center items-center h-full bg-zinc-200 rounded-md">
+                            <button className="flex justify-center items-center h-full bg-zinc-200 rounded-md" onClick={()=>{switchScreen(true, false, false)}}>
                             <p className="text-2xl font-semibold text-slate-900">Dismiss</p>
                             </button>
                             {canReply && 
-                                <button className="flex justify-center items-center h-full bg-zinc-900 rounded-md">
+                                <button className="flex justify-center items-center h-full bg-zinc-900 rounded-md" onClick={()=>setIsReplying(true)}>
                                     <p className="text-2xl font-semibold text-slate-200">Reply</p>
                                 </button>
                             }
