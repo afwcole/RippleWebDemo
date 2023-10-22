@@ -73,7 +73,7 @@ export default function Simulator() {
                     <h3 className="font-semibold text-gray-900 dark:text-white">Popover title</h3>
                 </div>
                 <div className="px-3 py-2">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <p>{"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}</p>
                 </div>
                 <div data-popper-arrow></div>
             </div>

@@ -3,6 +3,8 @@ import './css/style.css'
 import { Inter } from 'next/font/google'
 
 import Header from '@/components/ui/header'
+import Script from 'next/script';
+
 
 const inter = Inter({
   subsets: ['latin'],
@@ -27,7 +29,7 @@ export default function RootLayout({
           <Header />
           {children}
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></Script>
       </body>
     </html>
   )
