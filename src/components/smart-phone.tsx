@@ -1,22 +1,26 @@
 'use client'
 
 import { useState, useRef, useEffect, ChangeEvent } from 'react'
-import { Drawer } from 'flowbite';
+import { post } from '../apis/ussd'
+import { PostPayload, SIMMessage } from '@/types/types'
 
-type SmartPhoneProps = {
+interface SmartPhoneProps {
   phone: string
+  messages: Array<string>
+  updateMessages: (message: SIMMessage) => void
+  key: string
 }
 
-export default function SmartPhone({ phone }: SmartPhoneProps){
+export default function SmartPhone({ phone, messages, updateMessages }: SmartPhoneProps){
 
     const [processing, setProcessing] = useState<boolean>(false);
     const [IOScreen, setIOScreen] = useState<boolean>(false);
     const [home, setHome] = useState<boolean>(true);
     const [canReply, setCanReply] = useState<boolean>(true);
     const [isReplying, setIsReplying] = useState<boolean>(false);
-    const [messages, setMessages] = useState<Array<string>>(['Lorem ipsum dolor sit amet, consectetur adipiscing elit. ', 'Fusce rutrum accumsan gravida. Proin condimentum luctus imperdiet. Praesent ut urna leo. Mauris non lorem mollis, maximus enim in, consequat dolor. ']);
     const [SMSIsOpen, setSMSIsOpen] = useState(false);
     const [inputValue, setInputValue] = useState<string>('');
+    const [MSG, setMSG] = useState<string>('')
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         console.log(event.target.value)
@@ -38,45 +42,74 @@ export default function SmartPhone({ phone }: SmartPhoneProps){
         setHome(home)
     }
 
-    const dialExtenstion = () => {
-        let success
+    const dialExtenstion = async() => {
         switchScreen(false, true, false)
-        setInputValue('')
-        // Simulate an API request with a timer (e.g., 2 seconds)
-        setTimeout(() => {
-            success = true
+        const payload: PostPayload = {
+            USERID: 'RippleMO',
+            MSISDN: phone,
+            USERDATA: '*920*106',
+            MSGTYPE: true,
+            NETWORK: 'SIM',
+            SESSIONID: '16979969671727999',
+        }
+        await post(payload).then((res)=>{
             switchScreen(false, false, true)
-            if (success){
-                setCanReply(true)
-            } else {
-                setCanReply(false)
+            setCanReply(res.data.MSGTYPE)
+            setMSG(res.data.MSG)
+            if (res.data.SIM_MESSAGE){
+                if ( res.data.SIM_MESSAGE.TO && res.data.SIM_MESSAGE.MESSAGE){
+                    updateMessages(res.data.SIM_MESSAGE)
+                }
             }
-            switchScreen(false, false, true)
-        }, 2000);
+            if (res.status !== 200) {
+                throw new Error(`Request failed with status ${res.status}`);
+            }
+        }).catch((error)=>{
+            console.error('Error:', error);
+            setMSG(error.message)
+            switchScreen(false, false, true) // remove
+            setCanReply(false)
+        });
+        setIsReplying(false)
     }
 
-    const sendMessage = () => {
-        let success
+    const sendMessage = async() => {
         switchScreen(false, true, false)
-        setIsReplying(false)
-        setInputValue('')
-        // Simulate an API request with a timer (e.g., 2 seconds)
-        setTimeout(() => {
-            success = true
+        const payload: PostPayload = {
+            USERID: 'RippleMO',
+            MSISDN: phone,
+            USERDATA: inputValue,
+            MSGTYPE: true,
+            NETWORK: 'SIM',
+            SESSIONID: '16979969671727999',
+        } 
+        await post(payload).then((res)=>{
             switchScreen(false, false, true)
-            if (success) {
-                setCanReply(true)
-            } else {
-                setCanReply(false)
-            }   
-        }, 2000);
+            setCanReply(res.data.MSGTYPE)
+            setMSG(res.data.MSG)
+            if (res.data.SIM_MESSAGE){
+                if ( res.data.SIM_MESSAGE.TO && res.data.SIM_MESSAGE.MESSAGE){
+                    updateMessages(res.data.SIM_MESSAGE)
+                }
+            }
+            
+            if (res.status !== 200) {
+                throw new Error(`Request failed with status ${res.status}`);
+            }
+        }).catch((error)=>{
+            console.error('Error:', error);
+            setMSG(error.message)
+            switchScreen(false, false, true) // remove
+            setCanReply(false)
+        });
+        setInputValue('')
+        setIsReplying(false)
     }
 
     useEffect(()=>{
     }, [messages, phone])
 
     const numPadItems = [1,2,3,4,5,6,7,8,9,'*',0,'#']
-    const textWithNewline = 'This is a line of text.\nThis is a new line of text.';
 
     return (
         <div className="flex relative flex-col border-4 border-zinc-900 rounded-xl h-[70vh] w-[40vh] min-h-[700px] min-w-[400px] bg-white"> 
@@ -172,8 +205,8 @@ export default function SmartPhone({ phone }: SmartPhoneProps){
             {/* IOScreen Screen */}
             {IOScreen &&
                 <div className="flex flex-col justify-center items-center bg-zinc-300 w-full h-full rounded-md">
-                    <div className="w-full h-5/6 flex justify-center items-center">
-                        <pre className="text-zinc-950 font-bold text-center">{textWithNewline}</pre>
+                    <div className="w-full h-5/6 flex justify-center items-center overflow-x-auto">
+                        <pre className="text-zinc-950 font-bold text-center whitespace-normal whitespace-pre-line">{MSG}</pre>                        
                     </div>
                     {isReplying ? 
                         <div className="w-full h-2/6 flex flex-col bg-zinc-900 justify-center items-center p-5 rounded-t-lg transition-all duration-200 ease-in-out ">

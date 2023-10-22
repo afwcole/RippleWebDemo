@@ -3,6 +3,7 @@
 import SmartPhone from "./smart-phone"
 import { useEffect, useState } from 'react'
 import { getRandomPhoneNumber  } from "@/app/utils"
+import { SIMMessage } from '@/types/types'
 
 export default function Simulator() {
 
@@ -15,6 +16,26 @@ export default function Simulator() {
         setPhoneANumber(getRandomPhoneNumber());
         setPhoneBNumber(getRandomPhoneNumber());
     }, [])
+
+    const updateMessages = (message: SIMMessage) => {
+        if (message.TO===phoneANumber){
+            setPhoneASMSList([...phoneASMSList, message.MESSAGE])
+        }
+        if (message.TO===phoneBNumber){
+            setPhoneBSMSList([...phoneBSMSList, message.MESSAGE])
+        }
+    }
+
+    const clearMessages = (phone: string) => {
+        if (phone=='A'){
+            setPhoneANumber(getRandomPhoneNumber())
+            setPhoneASMSList([])
+        }
+        if (phone=='B'){
+            setPhoneBNumber(getRandomPhoneNumber())
+            setPhoneBSMSList([])
+        }        
+    }
 
     return (
         <section className="bg-gray-100 py-20">   
@@ -90,7 +111,7 @@ export default function Simulator() {
                                 <span className="text-zinc-600">+{phoneANumber}</span>    
                             </h4> 
                         </div>
-                        <button type="button" className="flex justify-center items-center w-10 h-10 bg-zinc-400 rounded-md hover:bg-zinc-700 active:bg-zinc-400" onClick={()=>{setPhoneANumber(getRandomPhoneNumber())}}>
+                        <button type="button" className="flex justify-center items-center w-10 h-10 bg-zinc-400 rounded-md hover:bg-zinc-700 active:bg-zinc-400" onClick={()=>{clearMessages('A')}}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 stroke-2" viewBox="0 0 24 24">
                                 <path fillRule="evenodd" d="M4.755 10.059a7.5 7.5 0 0112.548-3.364l1.903 1.903h-3.183a.75.75 0 100 1.5h4.992a.75.75 0 00.75-.75V4.356a.75.75 0 00-1.5 0v3.18l-1.9-1.9A9 9 0 003.306 9.67a.75.75 0 101.45.388zm15.408 3.352a.75.75 0 00-.919.53 7.5 7.5 0 01-12.548 3.364l-1.902-1.903h3.183a.75.75 0 000-1.5H2.984a.75.75 0 00-.75.75v4.992a.75.75 0 001.5 0v-3.18l1.9 1.9a9 9 0 0015.059-4.035.75.75 0 00-.53-.918z" clipRule="evenodd" />
                             </svg>
@@ -98,7 +119,7 @@ export default function Simulator() {
                     </div>
                     <hr className="h-px my-8 bg-gray-200 border-0 bg-zinc-700"/>
                     <div className="flex flex-row w-full justify-center items-center">
-                        <SmartPhone phone={phoneANumber}/>
+                        <SmartPhone phone={phoneANumber} messages={phoneASMSList} updateMessages={updateMessages} key='A'/>
                     </div>      
                 </div>
 
@@ -112,7 +133,7 @@ export default function Simulator() {
                                 <span className="text-zinc-600">+{phoneBNumber}</span>    
                             </h4> 
                         </div>
-                        <button type="button" className="flex justify-center items-center w-10 h-10 bg-zinc-400 rounded-md hover:bg-zinc-700 active:bg-zinc-400" onClick={()=>{setPhoneBNumber(getRandomPhoneNumber())}}>
+                        <button type="button" className="flex justify-center items-center w-10 h-10 bg-zinc-400 rounded-md hover:bg-zinc-700 active:bg-zinc-400" onClick={()=>{clearMessages('B')}}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 stroke-2" viewBox="0 0 24 24">
                                 <path fillRule="evenodd" d="M4.755 10.059a7.5 7.5 0 0112.548-3.364l1.903 1.903h-3.183a.75.75 0 100 1.5h4.992a.75.75 0 00.75-.75V4.356a.75.75 0 00-1.5 0v3.18l-1.9-1.9A9 9 0 003.306 9.67a.75.75 0 101.45.388zm15.408 3.352a.75.75 0 00-.919.53 7.5 7.5 0 01-12.548 3.364l-1.902-1.903h3.183a.75.75 0 000-1.5H2.984a.75.75 0 00-.75.75v4.992a.75.75 0 001.5 0v-3.18l1.9 1.9a9 9 0 0015.059-4.035.75.75 0 00-.53-.918z" clipRule="evenodd" />
                             </svg>
@@ -120,7 +141,7 @@ export default function Simulator() {
                     </div>
                     <hr className="h-px my-8 bg-gray-200 border-0 bg-zinc-700"/>
                     <div className="flex flex-row w-full justify-center items-center">
-                        <SmartPhone phone={phoneBNumber}/>
+                        <SmartPhone phone={phoneBNumber} messages={phoneBSMSList} updateMessages={updateMessages} key='B'/>
                     </div>      
                 </div>
             </div>
