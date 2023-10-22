@@ -1,30 +1,38 @@
 'use client'
 
-import Accordion from "./utils/accordion"
 import { useState, useRef, useEffect } from 'react'
+import { Drawer } from 'flowbite';
 
 export default function SmartPhone(props: any){
 
     const [processing, setProcessing] = useState<boolean>(false);
-    const [IOScreen, setIOScreen] = useState<boolean>(true);
-    const [home, setHome] = useState<boolean>(false);
+    const [IOScreen, setIOScreen] = useState<boolean>(false);
+    const [home, setHome] = useState<boolean>(true);
 
     const [canReply, setCanReply] = useState<boolean>(true);
     const [isReplying, setIsReplying] = useState<boolean>(true);
+
+    const [messages, setMessages] = useState<Array<string>>([]);
+
+    const [SMSIsOpen, setSMSIsOpen] = useState(false);
+
+    const toggleSMSIsOpen = () => {
+        setSMSIsOpen((prev) => !prev);
+    };
 
     const numPadItems = [1,2,3,4,5,6,7,8,9,'*',0,'#']
     const textWithNewline = 'This is a line of text.\nThis is a new line of text.';
 
     
     return (
-        <div className="flex flex-col border-4 border-zinc-900 rounded-xl sp-container"> 
+        <div className="flex relative flex-col border-4 border-zinc-900 rounded-xl h-[70vh] w-[40vh] bg-white"> 
             {/* SMS Indicator */}
             <div className="flex flex-row w-full justify-between p-3 items-center bg-slate-950">
                 <h4 className="h4 text-white">SMS Notifications</h4>
-                <button>
+                <button data-drawer-target="drawer-top-sms" data-drawer-show="drawer-top-sms" data-drawer-placement="top" aria-controls="drawer-top-sms">
                     <span className="relative flex h-10 w-10">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-10 w-10 bg-white justify-center items-center">
+                        <span className="relative inline-flex rounded-full h-10 w-10 bg-white justify-center items-center hover:bg-zinc-300 active:bg-green-300">
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 rounded-full fill-green-500" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
                             </svg>
@@ -32,6 +40,44 @@ export default function SmartPhone(props: any){
                     </span>
                 </button> 
             </div>
+
+            {/* SMS Drawer Component */}
+            {/* invisible - visible*/}
+            {/* "" */}
+            {/* ${SMSIsVisible ? 'visible':'invisible'} */}
+            <div id="drawer-top-sms" className='visible absolute top-0 left-0 right-0 z-40 w-full h-full p-4 transition-transform -translate-y-full bg-[#f1f2f6] rounded-lg' tabIndex={-1} aria-labelledby="drawer-top-label">
+                <h5 id="drawer-top-label" className="inline-flex items-center mb-4 text-base font-semibold text-zinc-800 dark:text-zinc-900">
+                    <svg className="w-4 h-4 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                    </svg>
+                    SMS Notifications
+                </h5>
+
+
+                {messages.length ? 
+                    <div className='h-5/6 overflow-y-auto mb-5'>
+                        {messages.map((item, index)=>(
+                            <div key={index} className="flex flex-row items-end justify-start m-4">
+                                <div className='relative w-4 h-4 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 mr-4'>
+                                    <svg className="absolute w-6 h-6 text-gray-700 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path></svg>
+                                </div>
+                                <div className='block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700'>
+                                    <p className="text-gray-700 dark:text-gray-400">{item}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                :
+                    <div className='h-5/6 mb-5'>
+                        <p>you have no messages...</p>
+                    </div>
+                }
+
+                <div className='bottom-0 flex items-center justify-center'>
+                    <button className="bg-gray-400 hover:bg-zinc-900 rounded-lg w-12 h-4" data-drawer-hide="drawer-top-sms"  aria-controls="drawer-top-sms" type="button">                        
+                    </button>
+                </div>
+            </div> 
 
             {/* Processing Screen */}
             {processing && 
