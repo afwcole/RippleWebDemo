@@ -40,7 +40,7 @@ export default function Simulator() {
     return (
         <section className="bg-gray-100 py-20">   
             {/* Section Header */}
-            <div className="flex flex-row w-full justify-center items-center pb-12">
+            <div className="flex flex-row w-full justify-center items-center pb-12 px-6">
                 <h2 className="h2 pr-5">Ripple Mobile USSD Simulator</h2>
                 <button className="bg-slate-900 justify-center items-center font-bold rounded-full w-10 h-10" data-modal-target="learn-more-modal" data-modal-toggle="learn-more-modal">
                     <svg xmlns="http://www.w3.org/2000/svg" className="animate-bounce w-10 h-10 rounded-full bg-slate-900 fill-gray-100" viewBox="0 0 24 24">
@@ -80,7 +80,7 @@ export default function Simulator() {
             </div>
 
             {/* Swap/Direction Section */}
-            <div className="flex flex-row w-full justify-center items-center">                
+            <div className="flex flex-row w-full justify-center items-center hidden lg:flex">                
                 <button className="justify-center items-center font-bold w-20 h-10 z-10" data-popover-target="swap-direction-popover" data-popover-placement="bottom">
                     <svg xmlns="http://www.w3.org/2000/svg" className="bg-slate-900 fill-gray-100 rounded-lg" viewBox="0 0 24 24">
                         <path fillRule="evenodd" d="M15.97 2.47a.75.75 0 011.06 0l4.5 4.5a.75.75 0 010 1.06l-4.5 4.5a.75.75 0 11-1.06-1.06l3.22-3.22H7.5a.75.75 0 010-1.5h11.69l-3.22-3.22a.75.75 0 010-1.06zm-7.94 9a.75.75 0 010 1.06l-3.22 3.22H16.5a.75.75 0 010 1.5H4.81l3.22 3.22a.75.75 0 11-1.06 1.06l-4.5-4.5a.75.75 0 010-1.06l4.5-4.5a.75.75 0 011.06 0z" clipRule="evenodd" />
@@ -100,7 +100,7 @@ export default function Simulator() {
             </div>
             
             {/* px-10 grid grid-cols-2 gap-5 */}
-            <div className="px-10 grid grid-cols-2 gap-5 overflow-auto grid-rows-auto grid-flow-col">
+            <div className="px-10 grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-5 overflow-x-auto">
                 {/* Phone 1 Section */}
                 <div className="flex flex-col col-span-1 bg-zinc-300 p-10 rounded-lg w-full min-w-[500px]">
                     <div className="flex flex-row w-full justify-between items-center">
