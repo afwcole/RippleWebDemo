@@ -2,7 +2,7 @@
 
 import SmartPhone from "./smart-phone"
 import { useEffect, useState } from 'react'
-import { getRandomPhoneNumber  } from "@/app/utils"
+import { getRandomPhoneNumber, delay } from "@/app/utils"
 import { SIMMessage } from '@/types/types'
 
 export default function Simulator() {
@@ -11,18 +11,23 @@ export default function Simulator() {
     const [phoneBNumber, setPhoneBNumber] = useState<string>('165100003444');
     const [phoneASMSList, setPhoneASMSList] = useState<Array<string>>([]);
     const [phoneBSMSList, setPhoneBSMSList] = useState<Array<string>>([]);
+    const [phoneANewMessage, setPhoneANewMessage] = useState<boolean>(false)
+    const [phoneBNewMessage, setPhoneBNewMessage] = useState<boolean>(false)
 
     useEffect(()=>{
         setPhoneANumber(getRandomPhoneNumber());
         setPhoneBNumber(getRandomPhoneNumber());
     }, [])
 
-    const updateMessages = (message: SIMMessage) => {
+    const updateMessages = async(message: SIMMessage) => {
+        await delay(500) // just to simulate real life delay
         if (message.TO===phoneANumber){
             setPhoneASMSList([...phoneASMSList, message.MESSAGE])
+            setPhoneANewMessage(true)
         }
         if (message.TO===phoneBNumber){
             setPhoneBSMSList([...phoneBSMSList, message.MESSAGE])
+            setPhoneBNewMessage(true)
         }
     }
 
@@ -38,7 +43,7 @@ export default function Simulator() {
     }
 
     return (
-        <section className="bg-gray-100 py-20">   
+        <section className="bg-gray-100 py-20" id="simulator">   
             {/* Section Header */}
             <div className="flex flex-row w-full justify-center items-center pb-12 px-6">
                 <h2 className="h2 pr-5">Ripple Mobile USSD Simulator</h2>
@@ -119,7 +124,7 @@ export default function Simulator() {
                     </div>
                     <hr className="h-px my-8 bg-gray-200 border-0 bg-zinc-700"/>
                     <div className="flex flex-row w-full justify-center items-center">
-                        <SmartPhone phone={phoneANumber} messages={phoneASMSList} updateMessages={updateMessages} key='A'/>
+                        <SmartPhone phone={phoneANumber} messages={phoneASMSList} updateMessages={updateMessages} key='A' newMessage={phoneANewMessage} setNewMessage={setPhoneANewMessage}/>
                     </div>      
                 </div>
 
@@ -141,7 +146,7 @@ export default function Simulator() {
                     </div>
                     <hr className="h-px my-8 bg-gray-200 border-0 bg-zinc-700"/>
                     <div className="flex flex-row w-full justify-center items-center">
-                        <SmartPhone phone={phoneBNumber} messages={phoneBSMSList} updateMessages={updateMessages} key='B'/>
+                        <SmartPhone phone={phoneBNumber} messages={phoneBSMSList} updateMessages={updateMessages} key='B' newMessage={phoneBNewMessage} setNewMessage={setPhoneBNewMessage}/>
                     </div>      
                 </div>
             </div>
