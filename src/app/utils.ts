@@ -8,3 +8,9 @@ export const getRandomPhoneNumber = (): string =>{
     const localNumber = getRandomNumber(1000000, 9999999).toString();
     return `${countryCode}${areaCode}${localNumber}`;
 }
+
+export const delay = (milliseconds: number): Promise<void> => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, milliseconds);
+  });
+}
