@@ -18,5 +18,5 @@ export interface ResponsePayload {
   USERDATA: string
   MSGTYPE: boolean
   MSG: string
-  SIM_MESSAGE: SIMMessage
+  SIM_MESSAGE: Array<SIMMessage>
 }

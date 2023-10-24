@@ -7,7 +7,7 @@ import { PostPayload, SIMMessage } from '@/types/types'
 interface SmartPhoneProps {
   phone: string
   messages: Array<string>
-  updateMessages: (message: SIMMessage) => void
+  updateMessages: (message: Array<SIMMessage>) => void
   key: string,
   newMessage: boolean, 
   setNewMessage: (bool: boolean) => void
@@ -60,9 +60,7 @@ export default function SmartPhone({ phone, messages, updateMessages, newMessage
             setCanReply(res.data.MSGTYPE)
             setMSG(res.data.MSG)
             if (res.data.SIM_MESSAGE){
-                if ( res.data.SIM_MESSAGE.TO && res.data.SIM_MESSAGE.MESSAGE){
-                    updateMessages(res.data.SIM_MESSAGE)
-                }
+                updateMessages(res.data.SIM_MESSAGE)
             }
             if (res.status !== 200) {
                 throw new Error(`Request failed with status ${res.status}`);
@@ -91,9 +89,7 @@ export default function SmartPhone({ phone, messages, updateMessages, newMessage
             setCanReply(res.data.MSGTYPE)
             setMSG(res.data.MSG)
             if (res.data.SIM_MESSAGE){
-                if ( res.data.SIM_MESSAGE.TO && res.data.SIM_MESSAGE.MESSAGE){
-                    updateMessages(res.data.SIM_MESSAGE)
-                }
+                updateMessages(res.data.SIM_MESSAGE)
             }
             
             if (res.status !== 200) {
@@ -121,7 +117,6 @@ export default function SmartPhone({ phone, messages, updateMessages, newMessage
                 <h4 className="h4 text-white">SMS Notifications</h4>
                 <button aria-controls="drawer-top-sms" onClick={toggleSMSIsOpen}>
                     <span className="relative flex h-10 w-10">
-                        {/* "animate-ping " */}
                         <span className={`${newMessage ? 'animate-ping': ''} absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-100`}></span>
                         <span className={`${messages.length ? 'bg-green-500': 'bg-white'} relative inline-flex rounded-full h-10 w-10 justify-center items-center hover:bg-zinc-500 active:bg-green-300`}>
                             <svg xmlns="http://www.w3.org/2000/svg" className={`${messages.length ? 'fill-white': 'fill-green-500'} w-6 h-6 rounded-full`} viewBox="0 0 24 24">
@@ -144,12 +139,12 @@ export default function SmartPhone({ phone, messages, updateMessages, newMessage
                 {messages.length ? 
                     <div className='h-5/6 overflow-y-auto mb-5'>
                         {messages.map((item, index)=>(
-                            <div key={index} className="flex flex-row items-end justify-start m-4">
+                            <div key={index} className="flex flex-row items-end justify-start m-4 overflow-x-auto">
                                 <div className='relative w-4 h-4 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 mr-4'>
                                     <svg className="absolute w-6 h-6 text-gray-700 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path></svg>
                                 </div>
                                 <div className='block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700'>
-                                    <p className="text-gray-700 dark:text-gray-400">{item}</p>
+                                    <p className="text-gray-700 dark:text-gray-400 whitespace-normal whitespace-pre-line">{item}</p>
                                 </div>
                             </div>
                         ))}
