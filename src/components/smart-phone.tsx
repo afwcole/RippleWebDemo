@@ -8,10 +8,12 @@ interface SmartPhoneProps {
   phone: string
   messages: Array<string>
   updateMessages: (message: SIMMessage) => void
-  key: string
+  key: string,
+  newMessage: boolean, 
+  setNewMessage: (bool: boolean) => void
 }
 
-export default function SmartPhone({ phone, messages, updateMessages }: SmartPhoneProps){
+export default function SmartPhone({ phone, messages, updateMessages, newMessage, setNewMessage }: SmartPhoneProps){
 
     const [processing, setProcessing] = useState<boolean>(false);
     const [IOScreen, setIOScreen] = useState<boolean>(false);
@@ -29,6 +31,7 @@ export default function SmartPhone({ phone, messages, updateMessages }: SmartPho
 
     const toggleSMSIsOpen = () => {
         setSMSIsOpen((prev) => !prev);
+        setNewMessage(false)
     };
 
     const switchScreen = (home:boolean, loading:boolean, io:boolean) => {
@@ -119,9 +122,9 @@ export default function SmartPhone({ phone, messages, updateMessages }: SmartPho
                 <button aria-controls="drawer-top-sms" onClick={toggleSMSIsOpen}>
                     <span className="relative flex h-10 w-10">
                         {/* "animate-ping " */}
-                        <span className={`${messages.length ? 'animate-ping': ''} absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-100`}></span>
-                        <span className="relative inline-flex rounded-full h-10 w-10 bg-white justify-center items-center hover:bg-zinc-300 active:bg-green-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 rounded-full fill-green-500" viewBox="0 0 24 24">
+                        <span className={`${newMessage ? 'animate-ping': ''} absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-100`}></span>
+                        <span className={`${messages.length ? 'bg-green-500': 'bg-white'} relative inline-flex rounded-full h-10 w-10 justify-center items-center hover:bg-zinc-500 active:bg-green-300`}>
+                            <svg xmlns="http://www.w3.org/2000/svg" className={`${messages.length ? 'fill-white': 'fill-green-500'} w-6 h-6 rounded-full`} viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
                             </svg>
                         </span>
