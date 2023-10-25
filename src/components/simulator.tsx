@@ -78,12 +78,37 @@ export default function Simulator() {
                         </div>
                         {/* Modal body */}
                         <div className="p-6 space-y-6">
-                            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
+                            <p className="text-base leading-relaxed text-gray-700 dark:text-gray-400">
+                                Our USSD-based Ripple Mobile simulator accurately replicates real-world product usage, offering an interactive, hands-on experience. 
+                                By using this simulator, Users will gain a comprehensive understanding of our product's features and functionality.   
                             </p>
-                            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
+
+                            <p>
+                                Each simulator has s unique session phone number, a refresh button for new sessions, 
+                                a bell icon for SMS notifications, preconfigured disabled number pads, and a call button for session initiation. 
+                                <span className="font-semibold"> Press the call button to begin.</span>
                             </p>
+                            <div className="bg-blue-100 p-2"> 
+                                <h4 className="text-xl font-semibold text-gray-900 dark:text-white text-blue-700">Recommended</h4>
+                                <hr className="h-px my-2 bg-blue-400 border-0 dark:bg-blue-100"/>
+                                <p>
+                                    When prompted for a phone number in one simulator, provide the session phone number from the other simulator.
+                                </p>  
+                            </div>
+                            
+
+                            <div className="bg-red-100 p-2"> 
+                                <h4 className="text-xl font-semibold text-red-900 dark:text-white">Limitations and Constraints</h4>
+                                <hr className="h-px my-2 bg-red-400 border-0 dark:bg-red-100"/>   
+                                <ul className="pl-5 space-y-1 list-disc dark:text-white-400 text-gray-700">
+                                    <li>
+                                        The simulator may not fully replicate the speed and efficiency of the product, as it operates in a controlled environment.
+                                    </li>
+                                    <li>
+                                        The simulator will<span className="font-bold m-2">not</span>interact/notify with real-life accounts and devices.
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -121,11 +146,15 @@ export default function Simulator() {
                                 <span className="text-zinc-600">+{phoneANumber}</span>    
                             </h4> 
                         </div>
-                        <button type="button" className="flex justify-center items-center w-10 h-10 bg-zinc-400 rounded-md hover:bg-zinc-700 active:bg-zinc-400" onClick={()=>{clearMessages('A')}}>
+                        <button data-tooltip-target="refresh-A-tooltip" data-tooltip-placement="bottom" type="button" className="flex justify-center items-center w-10 h-10 bg-zinc-400 rounded-md hover:bg-zinc-700 active:bg-zinc-400" onClick={()=>{clearMessages('A')}}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 stroke-2" viewBox="0 0 24 24">
                                 <path fillRule="evenodd" d="M4.755 10.059a7.5 7.5 0 0112.548-3.364l1.903 1.903h-3.183a.75.75 0 100 1.5h4.992a.75.75 0 00.75-.75V4.356a.75.75 0 00-1.5 0v3.18l-1.9-1.9A9 9 0 003.306 9.67a.75.75 0 101.45.388zm15.408 3.352a.75.75 0 00-.919.53 7.5 7.5 0 01-12.548 3.364l-1.902-1.903h3.183a.75.75 0 000-1.5H2.984a.75.75 0 00-.75.75v4.992a.75.75 0 001.5 0v-3.18l1.9 1.9a9 9 0 0015.059-4.035.75.75 0 00-.53-.918z" clipRule="evenodd" />
                             </svg>
                         </button>
+                        <div id="refresh-A-tooltip" role="tooltip" className="absolute z-10 bg-gray-200 invisible inline-block w-48 px-3 py-2 text-sm font-medium bg-white rounded-lg shadow-sm opacity-0 tooltip text-center text-gray-700">
+                            Create new Session Phone Number for Sim A
+                            <div className="tooltip-arrow" data-popper-arrow></div>
+                        </div>
                     </div>
                     <hr className="h-px my-8 bg-gray-200 border-0 bg-zinc-700"/>
                     <div className="flex flex-row w-full justify-center items-center">
@@ -143,11 +172,15 @@ export default function Simulator() {
                                 <span className="text-zinc-600">+{phoneBNumber}</span>    
                             </h4> 
                         </div>
-                        <button type="button" className="flex justify-center items-center w-10 h-10 bg-zinc-400 rounded-md hover:bg-zinc-700 active:bg-zinc-400" onClick={()=>{clearMessages('B')}}>
+                        <button data-tooltip-target="refresh-B-tooltip" data-tooltip-placement="bottom" type="button" className="flex justify-center items-center w-10 h-10 bg-zinc-400 rounded-md hover:bg-zinc-700 active:bg-zinc-400" onClick={()=>{clearMessages('B')}}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 stroke-2" viewBox="0 0 24 24">
                                 <path fillRule="evenodd" d="M4.755 10.059a7.5 7.5 0 0112.548-3.364l1.903 1.903h-3.183a.75.75 0 100 1.5h4.992a.75.75 0 00.75-.75V4.356a.75.75 0 00-1.5 0v3.18l-1.9-1.9A9 9 0 003.306 9.67a.75.75 0 101.45.388zm15.408 3.352a.75.75 0 00-.919.53 7.5 7.5 0 01-12.548 3.364l-1.902-1.903h3.183a.75.75 0 000-1.5H2.984a.75.75 0 00-.75.75v4.992a.75.75 0 001.5 0v-3.18l1.9 1.9a9 9 0 0015.059-4.035.75.75 0 00-.53-.918z" clipRule="evenodd" />
                             </svg>
                         </button>
+                        <div id="refresh-B-tooltip" role="tooltip" className="absolute z-10 bg-gray-200 invisible inline-block w-48 px-3 py-2 text-sm font-medium bg-white rounded-lg shadow-sm opacity-0 tooltip text-center text-gray-700">
+                            Create new Session Phone Number for Sim B
+                            <div className="tooltip-arrow" data-popper-arrow></div>
+                        </div>
                     </div>
                     <hr className="h-px my-8 bg-gray-200 border-0 bg-zinc-700"/>
                     <div className="flex flex-row w-full justify-center items-center">
