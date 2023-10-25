@@ -91,7 +91,7 @@ export default function Simulator() {
                             <div className="bg-blue-100 p-2"> 
                                 <h4 className="text-xl font-semibold text-gray-900 dark:text-white text-blue-700">Recommended</h4>
                                 <hr className="h-px my-2 bg-blue-400 border-0 dark:bg-blue-100"/>
-                                <p>
+                                <p className="font-semibold">
                                     When prompted for a phone number in one simulator, provide the session phone number from the other simulator.
                                 </p>  
                             </div>
