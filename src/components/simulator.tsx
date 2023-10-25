@@ -82,6 +82,7 @@ export default function Simulator() {
                                 Our USSD-based Ripple Mobile simulator accurately replicates real-world product usage, offering an interactive, hands-on experience. 
                                 By using this simulator, Users will gain a comprehensive understanding of our product's features and functionality.   
                             </p>
+                            <a href="#use-cases" data-modal-hide="learn-more-modal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline"> Explore our use case</a>
 
                             <p>
                                 Each simulator has s unique session phone number, a refresh button for new sessions, 
