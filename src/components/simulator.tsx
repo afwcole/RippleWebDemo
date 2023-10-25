@@ -13,6 +13,7 @@ export default function Simulator() {
     const [phoneBSMSList, setPhoneBSMSList] = useState<Array<string>>([]);
     const [phoneANewMessage, setPhoneANewMessage] = useState<boolean>(false)
     const [phoneBNewMessage, setPhoneBNewMessage] = useState<boolean>(false)
+    const [copyMessage, setCopyMessage] = useState<string>('Click to copy');
 
     useEffect(()=>{
         setPhoneANumber(getRandomPhoneNumber());
@@ -45,6 +46,13 @@ export default function Simulator() {
             setPhoneBNumber(getRandomPhoneNumber())
             setPhoneBSMSList([])
         }        
+    }
+
+    const copyToClipBoard = async(text: string) => {
+        navigator.clipboard.writeText(text)
+        setCopyMessage('Copied')
+        await delay(500)
+        setCopyMessage('Click to copy')
     }
 
     return (
@@ -134,6 +142,14 @@ export default function Simulator() {
                 </div>
                 <div data-popper-arrow></div>
             </div>
+
+            {/* Click To Copy PopOver */}
+            <div data-popover id="copy-info-popover" role="tooltip" className="absolute z-10 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                <div className="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                    <h3 className="font-semibold text-gray-900 dark:text-white">{copyMessage}</h3>
+                </div>
+                <div data-popper-arrow></div>
+            </div>
             
             {/* px-10 grid grid-cols-2 gap-5 */}
             <div className="px-10 grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-5 overflow-x-auto">
@@ -144,7 +160,7 @@ export default function Simulator() {
                             <h3 className="h3">Phone A Simulator</h3>
                             <h4 className="h4">
                                 <span>Session Phone Number: </span>  
-                                <span className="text-zinc-600">+{phoneANumber}</span>    
+                                <span className="text-zinc-600 cursor-pointer" data-popover-target="copy-info-popover" data-popover-placement="bottom" onClick={()=>{copyToClipBoard(phoneANumber)}}>+{phoneANumber}</span>    
                             </h4> 
                         </div>
                         <button data-tooltip-target="refresh-A-tooltip" data-tooltip-placement="bottom" type="button" className="flex justify-center items-center w-10 h-10 bg-zinc-400 rounded-md hover:bg-zinc-700 active:bg-zinc-400" onClick={()=>{clearMessages('A')}}>
@@ -170,7 +186,7 @@ export default function Simulator() {
                             <h3 className="h3">Phone B Simulator</h3>
                             <h4 className="h4">
                                 <span>Session Phone Number: </span>  
-                                <span className="text-zinc-600">+{phoneBNumber}</span>    
+                                <span className="text-zinc-600 cursor-pointer" data-popover-target="copy-info-popover" data-popover-placement="bottom" onClick={()=>{copyToClipBoard(phoneBNumber)}}>+{phoneBNumber}</span>    
                             </h4> 
                         </div>
                         <button data-tooltip-target="refresh-B-tooltip" data-tooltip-placement="bottom" type="button" className="flex justify-center items-center w-10 h-10 bg-zinc-400 rounded-md hover:bg-zinc-700 active:bg-zinc-400" onClick={()=>{clearMessages('B')}}>
