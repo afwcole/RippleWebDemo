@@ -59,7 +59,7 @@ export default function Hero() {
                   </a>
                 </div>
                 <div>
-                  <a className="btn text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4" href="#0">Try Simulator</a>
+                  <a className="btn text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4" href="#simulator">Try Simulator</a>
                 </div>
               </div>
             </div>
