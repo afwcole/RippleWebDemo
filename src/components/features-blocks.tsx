@@ -12,7 +12,7 @@ export default function FeaturesBlocks() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
             <h2 className="h2 mb-4">Use Cases</h2>
-            <p className="text-xl text-gray-600">To demonstrate the versatility of our product. We've highlighted six key use cases to showcase how our product seamlessly integrates into daily life.</p>
+            <p className="text-xl text-gray-600">{"To demonstrate the versatility of our product. We've highlighted six key use cases to showcase how our product seamlessly integrates into daily life."}</p>
           </div>
 
           {/* Items */}

@@ -87,13 +87,12 @@ export default function Simulator() {
                         {/* Modal body */}
                         <div className="p-6 space-y-6">
                             <p className="text-base leading-relaxed text-gray-700 dark:text-gray-400">
-                                Our USSD-based Ripple Mobile simulator accurately replicates real-world product usage, offering an interactive, hands-on experience. 
-                                By using this simulator, Users will gain a comprehensive understanding of our product's features and functionality.   
+                                {"Our USSD-based Ripple Mobile simulator accurately replicates real-world product usage, offering an interactive, hands-on experience. By using this simulator, Users will gain a comprehensive understanding of our product's features and functionality.   "}
                             </p>
                             <a href="#use-cases" data-modal-hide="learn-more-modal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline"> Explore our use cases</a>
 
                             <p>
-                                Each simulator has s unique session phone number, a refresh button for new sessions, 
+                                Each simulator has a unique session phone number, a refresh button for new sessions, 
                                 a bell icon for SMS notifications, preconfigured disabled number pads, and a call button for session initiation. 
                                 <span className="font-semibold"> Press the call button to begin.</span>
                             </p>
@@ -138,7 +137,7 @@ export default function Simulator() {
                     <h3 className="font-semibold text-gray-900 dark:text-white text-center">Simulated Mobile Interaction Showcase</h3>
                 </div>
                 <div className="px-3 py-2">
-                    <p className="text-center">Experience the full capabilities of our technology as we demonstrate how two mobile phone simulators interact harmoniously, offering a glimpse into the innovative solutions we've created.</p>
+                    <p className="text-center">{"Experience the full capabilities of our technology as we demonstrate how two mobile phone simulators interact harmoniously, offering a glimpse into the innovative solutions we've created."}</p>
                 </div>
                 <div data-popper-arrow></div>
             </div>
