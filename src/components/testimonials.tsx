@@ -42,7 +42,7 @@ export default function Testimonials() {
                   <Image className="relative rounded-full" src={fredImage} width={96} height={96} alt="Testimonial 01" />
                 </div>
                 <blockquote className="text-xl font-medium mb-4">
-                  “ As a freelancer, receiving payment from international clients can be a hassle. But with Ripple Mobile I can get paid for my gigs and send money home to my mother in our village, all with one platform. She loves the simplicity of Ripple Mobile's USSD on her basic phone. It allows me to get paid by my clients and provide for my family no matter the distance.“  </blockquote>
+                  “ As a freelancer, receiving payment from international clients can be a hassle. But with Ripple Mobile I can get paid for my gigs and send money home to my mother in our village, all with one platform. She loves the simplicity of Ripple Mobile&apos;s USSD on her basic phone. It allows me to get paid by my clients and provide for my family no matter the distance.“  </blockquote>
                 <cite className="block font-bold text-lg not-italic mb-1">Fred</cite>
                 <div className="text-gray-600">
                   <span>Freelancer</span>
