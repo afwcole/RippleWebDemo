@@ -4,7 +4,7 @@ import VideoThumb from '../../public/images/hero-image.png'
 import ModalVideo from '@/components/modal-video'
 import { useState } from 'react'
 import Image from 'next/image'
-import Hero1 from '@../../public/images/hero-1.jpg'
+import Hero1 from '@../../public/images/hero-1.jpeg'
 import Hero2 from '@../../public/images/hero-2.jpeg'
 
 export default function Hero() {
