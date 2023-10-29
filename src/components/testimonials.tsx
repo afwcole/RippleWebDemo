@@ -57,7 +57,7 @@ export default function Testimonials() {
                   <Image className="relative rounded-full" src={maryImage} width={96} height={96} alt="Testimonial 02" />
                 </div>
                 <blockquote className="text-xl font-medium mb-4">
-                  “ Ripple Mobile's POS system was a revelation for my shop. It's simple enough for someone like me who isn't tech-savvy, and my customers love how fast they can check out. And when it's time to restock, paying my suppliers from around the world feels so so easy. “                </blockquote>
+                  “{"Ripple Mobile's POS system was a revelation for my shop. It's simple enough for someone like me who isn't tech-savvy, and my customers love how fast they can check out. And when it's time to restock, paying my suppliers from around the world feels so so easy. "}“                </blockquote>
                 <cite className="block font-bold text-lg not-italic mb-1">Mary</cite>
                 <div className="text-gray-600">
                   <span>Marketwoman</span>
