@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import TestimonialImage from '@../../public/images/gradient.png'
-import fredImage from '@../../public/images/fred.jpg'
+import fredImage from '@../../public/images/Fred.jpg'
 import maryImage from '@../../public/images/mary.png'
 
 export default function Testimonials() {
