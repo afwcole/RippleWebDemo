@@ -23,12 +23,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js" async/>
+      </head>
       <body className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}>
         <div className="Simpleflex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">
           <Header />
           {children}
         </div>
-        <Script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></Script>
       </body>
     </html>
   )
