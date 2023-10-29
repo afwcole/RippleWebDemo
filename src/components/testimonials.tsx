@@ -55,7 +55,7 @@ export default function Testimonials() {
                   <Image className="relative rounded-full" src={TestimonialImage} width={96} height={96} alt="Testimonial 02" />
                 </div>
                 <blockquote className="text-xl font-medium mb-4">
-                  “ RippleMobile is a product I can us. Its clear and familiar interface makes it seamlessly integrate into my daily operations. I don't need to be a tech expert to use it. “                </blockquote>
+                  “ RippleMobile is a product I can us. Its clear and familiar interface makes it seamlessly integrate into my daily operations. I don&apos;t need to be a tech expert to use it. “                </blockquote>
                 <cite className="block font-bold text-lg not-italic mb-1">Mary</cite>
                 <div className="text-gray-600">
                   <span>Vendor</span>
