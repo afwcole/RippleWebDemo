@@ -44,10 +44,10 @@ export default function Hero() {
               <div id="default-carousel" className="absolute inset-0 -z-[2] bg-black bg-opacity-70" data-carousel="slide" data-carousel-interval="7000">
                 <div className="relative overflow-hidden roundedLg h-full">
                   <div className="hidden duration-[650ms] ease-linear" data-carousel-item>
-                    <Image src={Hero2} className="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 brightness-[0.4]" alt="..."/>
+                    <Image src={Hero1} className="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 brightness-[0.4]" alt="..."/>
                   </div>
                   <div className="hidden duration-[650ms] ease-linear" data-carousel-item>
-                    <Image src={Hero1} className="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 brightness-[0.4]" alt="..."/>
+                    <Image src={Hero2} className="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 brightness-[0.4]" alt="..."/>
                   </div>
                 </div>
               </div>

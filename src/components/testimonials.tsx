@@ -40,7 +40,7 @@ export default function Testimonials() {
                   <Image className="relative rounded-full" src={TestimonialImage} width={96} height={96} alt="Testimonial 01" />
                 </div>
                 <blockquote className="text-xl font-medium mb-4">
-                 “ As a freelancer, I find RippleMobile to be a brilliantly designed solution, it seamlessly bridges the tech-savvy world to the non-tech-savvy world, I am gauranteed easy payments and transfers to my non-tech-savvy mother in the village. “  </blockquote>
+                 “ As a freelancer, receiving payment from international clients can be a hassle. But with Ripple Mobile I can get paid for my gigs and send money home to my mother in our village, all with one platform. She loves the simplicity of Ripple Mobile's USSD on her basic phone. It allows me to get paid by my clients and provide for my family no matter the distance. “  </blockquote>
                 <cite className="block font-bold text-lg not-italic mb-1">Fred</cite>
                 <div className="text-gray-600">
                   <span>Freelancer</span>
@@ -55,10 +55,10 @@ export default function Testimonials() {
                   <Image className="relative rounded-full" src={TestimonialImage} width={96} height={96} alt="Testimonial 02" />
                 </div>
                 <blockquote className="text-xl font-medium mb-4">
-                  “ RippleMobile is a product I can us. Its clear and familiar interface makes it seamlessly integrate into my daily operations. I don&apos;t need to be a tech expert to use it. “                </blockquote>
+                  “ Ripple Mobile's POS system was a revelation for my shop. It's simple enough for someone like me who isn't tech-savvy, and my customers love how fast they can check out. And when it's time to restock, paying my suppliers from around the world, it feels so easy to use one platform. “                </blockquote>
                 <cite className="block font-bold text-lg not-italic mb-1">Mary</cite>
                 <div className="text-gray-600">
-                  <span>Vendor</span>
+                  <span>Marketwoman</span>
                 </div>
               </div>
             </div>
