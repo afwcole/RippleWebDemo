@@ -40,10 +40,10 @@ export default function Testimonials() {
                   <Image className="relative rounded-full" src={TestimonialImage} width={96} height={96} alt="Testimonial 01" />
                 </div>
                 <blockquote className="text-xl font-medium mb-4">
-                  “ As a software engineer, I find RippleMobile to be a brilliantly designed solution. Its robust backend, coupled with a clean and intuitive interface, will make it a joy to work with. The incorporation of USSD technology will be widely accepted in a lot of low and middle income markets. “                </blockquote>
-                <cite className="block font-bold text-lg not-italic mb-1">Quame Eugene</cite>
+                 “ As a freelancer, I find RippleMobile to be a brilliantly designed solution, it seamlessly bridges the tech-savvy world to the non-tech-savvy world, I am gauranteed easy payments and transfers to my non-tech-savvy mother in the village. “  </blockquote>
+                <cite className="block font-bold text-lg not-italic mb-1">Fred</cite>
                 <div className="text-gray-600">
-                  <span>Software Engineer</span>
+                  <span>Freelancer</span>
                 </div>
               </div>
             </div>
