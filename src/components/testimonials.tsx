@@ -42,7 +42,7 @@ export default function Testimonials() {
                   <Image className="relative rounded-full w-20 h-20 object-cover" src={fredImage} width={96} height={96} alt="Testimonial 01" />
                 </div>
                 <blockquote className="text-xl font-medium mb-4">
-                  "As a freelancer, receiving payment from international clients can be a hassle. But with Ripple Mobile I can get paid for my gigs and send money home to my mother in our village, all with one platform. She loves the simplicity of Ripple Mobile&apos;s USSD on her basic phone. It allows me to get paid by my clients and provide for my family no matter the distance."  </blockquote>
+                  {"\"As a freelancer, receiving payment from international clients can be a hassle. But with Ripple Mobile I can get paid for my gigs and send money home to my mother in our village, all with one platform. She loves the simplicity of Ripple Mobile&apos;s USSD on her basic phone. It allows me to get paid by my clients and provide for my family no matter the distance.\""}  </blockquote>
                 <cite className="block font-bold text-lg not-italic mb-1">Fred</cite>
                 <div className="text-gray-600">
                   <span>Freelancer</span>
@@ -57,7 +57,7 @@ export default function Testimonials() {
                   <Image className="relative rounded-full w-20 h-20 object-cover" src={maryImage} width={96} height={96} alt="Testimonial 02" />
                 </div>
                 <blockquote className="text-xl font-medium mb-4">
-                  "{"Ripple Mobile's POS system was a revelation for my shop. It's simple enough for someone like me who isn't tech-savvy, and my customers love how fast they can check out. And when it's time to restock, paying my suppliers from around the world feels so so easy. "}"
+                  {"\"Ripple Mobile's POS system was a revelation for my shop. It's simple enough for someone like me who isn't tech-savvy, and my customers love how fast they can check out. And when it's time to restock, paying my suppliers from around the world feels so so easy. \""}
                 </blockquote>
                 <cite className="block font-bold text-lg not-italic mb-1">Mary</cite>
                 <div className="text-gray-600">
