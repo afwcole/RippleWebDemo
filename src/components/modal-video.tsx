@@ -15,6 +15,7 @@ interface ModalVideoProps {
   video: string
   videoWidth: number
   videoHeight: number
+  videoTitle: string
 }
 
 export default function ModalVideo({
@@ -27,6 +28,7 @@ export default function ModalVideo({
   video,
   videoWidth,
   videoHeight,
+  videoTitle
 }: ModalVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
@@ -36,43 +38,25 @@ export default function ModalVideo({
       {/* Video thumbnail */}
       <div>
         <div className="relative flex justify-center mb-8" data-aos="zoom-y-out" data-aos-delay="450">
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center cursor-pointer brightness-[.7] hover:brightness-100 transition-all">
             <Image src={thumb} width={thumbWidth} height={thumbHeight} alt={thumbAlt} />
-            <svg className="absolute inset-0 max-w-full mx-auto md:max-w-none h-auto" width="768" height="432" viewBox="0 0 768 432" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-              <defs>
-                <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="hero-ill-a">
-                  <stop stopColor="#FFF" offset="0%" />
-                  <stop stopColor="#EAEAEA" offset="77.402%" />
-                  <stop stopColor="#DFDFDF" offset="100%" />
-                </linearGradient>
-                <linearGradient x1="50%" y1="0%" x2="50%" y2="99.24%" id="hero-ill-b">
-                  <stop stopColor="#FFF" offset="0%" />
-                  <stop stopColor="#EAEAEA" offset="48.57%" />
-                  <stop stopColor="#DFDFDF" stopOpacity="0" offset="100%" />
-                </linearGradient>
-                <radialGradient cx="21.152%" cy="86.063%" fx="21.152%" fy="86.063%" r="79.941%" id="hero-ill-e">
-                  <stop stopColor="#4FD1C5" offset="0%" />
-                  <stop stopColor="#81E6D9" offset="25.871%" />
-                  <stop stopColor="#338CF5" offset="100%" />
-                </radialGradient>
-                <circle id="hero-ill-d" cx="384" cy="216" r="64" />
-              </defs>
-              <g fill="none" fillRule="evenodd">
-                <circle fillOpacity=".04" fill="url(#hero-ill-a)" cx="384" cy="216" r="128" />
-                <circle fillOpacity=".16" fill="url(#hero-ill-b)" cx="384" cy="216" r="96" />
-                <g fillRule="nonzero">
-                  <use fill="#000" xlinkHref="#hero-ill-d" />
-                  <use fill="url(#hero-ill-e)" xlinkHref="#hero-ill-d" />
-                </g>
-              </g>
-            </svg>
+            <div className="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex flex-col justify-center items-center text-xl text-white font-semibold  bg-gradient-to-r from-blue-500 to-teal-400" onClick={() => { setModalOpen(true) }}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-16 h-16">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
+              </svg>
+              <span>
+                click to play
+              </span>
+            </div>
+
           </div>
-          <button className="absolute top-full flex items-center transform -translate-y-1/2 bg-white rounded-full font-medium group p-4 shadow-lg" onClick={() => { setModalOpen(true) }}>
+          <button className="absolute top-full flex items-center transform -translate-y-1/2 bg-white rounded-full font-medium group p-4 shadow-lg z-[11]" onClick={() => { setModalOpen(true) }}>
             <svg className="w-6 h-6 fill-current text-gray-400 group-hover:text-blue-600 shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0 2C5.373 24 0 18.627 0 12S5.373 0 12 0s12 5.373 12 12-5.373 12-12 12z" />
               <path d="M10 17l6-5-6-5z" />
             </svg>
-            <span className="ml-3">Watch the full video (3 min)</span>
+            <span className="ml-3 font-semibold">{videoTitle}</span>
           </button>
         </div>
       </div>

@@ -1,14 +1,16 @@
 "use client"
 
-import VideoThumb from '../../public/images/hero-image.png'
 import ModalVideo from '@/components/modal-video'
 import { useState } from 'react'
 import Image from 'next/image'
 import Hero1 from '@../../public/images/hero-1.jpeg'
 import Hero2 from '@../../public/images/hero-2.jpeg'
+import VideoThumb1 from '@../../public/images/phase-1-thumbnail.png'
+import VideoThumb2 from '@../../public/images/phase-2-thumbnail.png'
 
 export default function Hero() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen1, setModalOpen1] = useState(false);
 
   return (
     <section className="relative">
@@ -24,8 +26,8 @@ export default function Hero() {
             </linearGradient>
           </defs>
           <g fill="url(#illustration-01)" fillRule="evenodd">
-            <circle cx="1232" cy="300" r="128" />
-            <circle cx="155" cy="443" r="64" />
+            <circle cx="1232" cy="470" r="100" />
+            <circle cx="125" cy="470" r="64" />
           </g>
         </svg>
       </div>
@@ -86,18 +88,31 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Hero image */}
-          <ModalVideo
-            modalOpen={modalOpen} 
-            setModalOpen={setModalOpen}
-            thumb={VideoThumb}
-            thumbWidth={600}
-            thumbHeight={432}
-            thumbAlt="Modal video thumbnail"
-            video="/videos/video.mp4"
-            videoWidth={1920}
-            videoHeight={1080} />
+          <div className='relative grid sm:grid-cols-1 md:grid-cols-2  grid-flow-row gap-4'>
+            <ModalVideo
+              modalOpen={modalOpen} 
+              setModalOpen={setModalOpen}
+              thumb={VideoThumb1}
+              thumbWidth={600}
+              thumbHeight={432}
+              thumbAlt="Phase 1 video thumbnail"
+              video="/videos/video.mp4"
+              videoWidth={1920}
+              videoHeight={1080}
+              videoTitle="Watch Phase 1 full video (3 min)"/>
 
+            <ModalVideo
+              modalOpen={modalOpen1} 
+              setModalOpen={setModalOpen1}
+              thumb={VideoThumb2}
+              thumbWidth={600}
+              thumbHeight={432}
+              thumbAlt="Phase 2 video thumbnail"
+              video="/videos/video.mp4"
+              videoWidth={1920}
+              videoHeight={1080}
+              videoTitle="Watch Phase 2 full video (3 min)" />
+          </div>
         </div>
 
       </div>

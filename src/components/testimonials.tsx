@@ -30,7 +30,7 @@ export default function Testimonials() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
             <h2 className="h2 mb-4">Customer Persona Testimonials</h2>
-            <p className="text-xl text-gray-600" data-aos="zoom-y-out"> Hear from our customer persona as they share their perspectives on the impact of Ripple Mobile on their financial interactions and the opportunities it unlocks.</p>
+            <p className="text-xl text-gray-600" data-aos="zoom-y-out"> Hear from our customer personas as they share their perspectives on the impact of Ripple Mobile on their financial interactions and the opportunities it unlocks.</p>
           </div>
 
           {/* Testimonials */}
