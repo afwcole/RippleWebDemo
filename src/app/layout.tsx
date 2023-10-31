@@ -12,8 +12,8 @@ const inter = Inter({
 })
 
 export const metadata = {
-  title: 'Ripple Mobile',
-  description: 'CBDC Access For Everybody',
+  title: 'Ripple Mobile | CBDC Accessibility for Low Tech Markets',
+  description: 'Send XRP. No Internet. No Smartphone. No Problem!',
 }
 
 export default function RootLayout({

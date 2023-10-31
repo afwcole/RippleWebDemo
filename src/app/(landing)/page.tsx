@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Ripple Mobile',
+  title: 'Ripple Mobile | CBDC Accessibility for Low Tech Markets',
   description: 'Send XRP. No Internet. No Smartphone. No Problem!',
 }
 
