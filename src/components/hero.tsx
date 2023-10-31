@@ -111,7 +111,7 @@ export default function Hero() {
               video="f0zbOKuGsbo"
               videoWidth={1920}
               videoHeight={1080}
-              videoTitle="Watch Phase 2 full video (3 min)" />
+              videoTitle="Watch Phase 2 full video (5 min)" />
           </div>
         </div>
 
