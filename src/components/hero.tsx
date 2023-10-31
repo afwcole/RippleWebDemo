@@ -96,7 +96,7 @@ export default function Hero() {
               thumbWidth={600}
               thumbHeight={432}
               thumbAlt="Phase 1 video thumbnail"
-              video="f0zbOKuGsbo"
+              video="uamXBpjRN-M"
               videoWidth={1920}
               videoHeight={1080}
               videoTitle="Watch Phase 1 full video (3 min)"/>
