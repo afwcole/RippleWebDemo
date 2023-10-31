@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Home - Simple',
-  description: 'Page description',
+  title: 'Ripple Mobile',
+  description: 'Send XRP. No Internet. No Smartphone. No Problem!',
 }
 
 import Hero from '@/components/hero'
