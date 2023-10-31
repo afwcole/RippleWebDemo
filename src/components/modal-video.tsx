@@ -30,7 +30,7 @@ export default function ModalVideo({
   videoHeight,
   videoTitle
 }: ModalVideoProps) {
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const videoRef = useRef<HTMLIFrameElement>(null)
 
   return (
     <div>
@@ -62,7 +62,7 @@ export default function ModalVideo({
       </div>
       {/* End: Video thumbnail */}
 
-      <Transition show={modalOpen} as={Fragment} afterEnter={() => videoRef.current?.play()}>
+      <Transition show={modalOpen} as={Fragment}>
         <Dialog initialFocus={videoRef} onClose={() => setModalOpen(false)}>
 
           {/* Modal backdrop */}
@@ -90,10 +90,15 @@ export default function ModalVideo({
           >
             <div className="max-w-6xl mx-auto h-full flex items-center">
               <Dialog.Panel className="w-full max-h-full aspect-video bg-black overflow-hidden">
-                <video ref={videoRef} width={videoWidth} height={videoHeight} loop controls>
-                  <source src={video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <iframe
+                  ref={videoRef}
+                  width={videoWidth}
+                  height={videoHeight}
+                  src={`https://www.youtube.com/embed/${video}`}  // Assuming `video` prop is the YouTube video ID
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </Dialog.Panel>
             </div>
           </Transition.Child>
