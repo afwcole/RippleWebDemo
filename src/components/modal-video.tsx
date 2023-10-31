@@ -88,12 +88,12 @@ export default function ModalVideo({
             leaveFrom="oopacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="max-w-6xl mx-auto h-full flex items-center">
-              <Dialog.Panel className="w-full max-h-full aspect-video bg-black overflow-hidden">
+            <div className="max-w-6xl mx-auto h-full flex items-center w-10/12">
+              <Dialog.Panel className="inline-block w-full max-h-full aspect-video bg-black overflow-hidden">
                 <iframe
+                  className='w-full h-full'
                   ref={videoRef}
-                  width={videoWidth}
-                  height={videoHeight}
+                  name={videoTitle}
                   src={`https://www.youtube.com/embed/${video}`}  // Assuming `video` prop is the YouTube video ID
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
